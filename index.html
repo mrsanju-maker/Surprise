@@ -9,8 +9,6 @@
   :root{
     --bg1: #ff9a9e;
     --bg2: #fecfef;
-    --accent: #ff6b81;
-    --accent-dark: #e0405a;
     --white: #fff;
   }
   body{
@@ -44,37 +42,23 @@
     animation: floatText 4s ease-in-out infinite;
     z-index:5;
   }
-  .heart{
-    position:relative;
+  .emoji-heart{
     display:inline-block;
-    width:44px; height:38px;
-    transform:rotate(-45deg);
-    margin-left:10px;
     animation: beat 1s infinite;
+    margin-left:10px;
   }
-  .heart::before,.heart::after{
-    content:""; position:absolute;
-    width:44px; height:44px; border-radius:50%;
-    background:linear-gradient(180deg,var(--accent),var(--accent-dark));
-    top:-22px; left:0;
-  }
-  .heart::after{ left:22px; top:0; }
-  /* floating hearts */
+  /* floating emoji hearts */
   .floating{position:absolute;inset:0;z-index:2;pointer-events:none;}
-  .floating i{
-    position:absolute;width:18px;height:16px;transform:rotate(-45deg);
-    animation: floatUp linear infinite;opacity:0.9;
+  .floating span{
+    position:absolute;
+    font-size:22px;
+    animation: floatUp linear infinite;
   }
-  .floating i::before,.floating i::after{
-    content:"";position:absolute;width:18px;height:18px;border-radius:50%;
-    background:linear-gradient(180deg,var(--accent),var(--accent-dark));
-  }
-  .floating i::after{left:9px;top:2px;}
-  .floating i:nth-child(1){left:15%;bottom:8%;animation-duration:7s;}
-  .floating i:nth-child(2){left:30%;bottom:4%;animation-duration:6s;}
-  .floating i:nth-child(3){left:55%;bottom:12%;animation-duration:9s;}
-  .floating i:nth-child(4){left:70%;bottom:6%;animation-duration:8s;}
-  .floating i:nth-child(5){left:85%;bottom:3%;animation-duration:7s;}
+  .floating span:nth-child(1){left:15%;bottom:8%;animation-duration:7s;}
+  .floating span:nth-child(2){left:30%;bottom:4%;animation-duration:6s;}
+  .floating span:nth-child(3){left:55%;bottom:12%;animation-duration:9s;}
+  .floating span:nth-child(4){left:70%;bottom:6%;animation-duration:8s;}
+  .floating span:nth-child(5){left:85%;bottom:3%;animation-duration:7s;}
   /* surprise message */
   .surprise{
     position:absolute;
@@ -85,18 +69,18 @@
     opacity:0;
     transform:scale(0.3);
     animation: reveal 2s ease-out forwards;
-    animation-delay:4s; /* appears after 4 seconds */
+    animation-delay:2s;
     text-shadow:0 6px 14px rgba(0,0,0,0.25);
   }
   /* animations */
   @keyframes beat{
-    0%,100%{transform:rotate(-45deg) scale(1);}
-    30%{transform:rotate(-45deg) scale(1.2);}
-    60%{transform:rotate(-45deg) scale(0.95);}
+    0%,100%{transform:scale(1);}
+    30%{transform:scale(1.2);}
+    60%{transform:scale(0.95);}
   }
   @keyframes floatUp{
-    0%{transform:translateY(0) rotate(-45deg);opacity:1;}
-    100%{transform:translateY(-420px) rotate(-45deg);opacity:0;}
+    0%{transform:translateY(0);opacity:1;}
+    100%{transform:translateY(-420px);opacity:0;}
   }
   @keyframes floatText{
     0%,100%{transform:translateY(0);}
@@ -112,8 +96,10 @@
 </head>
 <body>
   <div class="card">
-    <div class="floating"><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="message">I Meow You 😽<span class="heart"></span></div>
+    <div class="floating">
+      <span>❤️</span><span>💖</span><span>💕</span><span>💞</span><span>💓</span>
+    </div>
+    <div class="message">I Meow You 😽<span class="emoji-heart">❤️</span></div>
     <div class="surprise">💝 You are my everything 💝</div>
   </div>
 </body>
